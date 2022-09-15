@@ -15,15 +15,21 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Password is required'],
     },
+    
+    avatarUrl: {
+        type: String,
+        required: true,
+    },
+    
     token: {
         type: String,
         default: "",
     },
     subscription: {
-    type: String,
-    enum: ["starter", "pro", "business"],
-    default: "starter"
-  },
+        type: String,
+        enum: ["starter", "pro", "business"],
+        default: "starter"
+    },
   
      
 }, { versionKey: false, timestamps: true });
