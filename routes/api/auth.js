@@ -15,6 +15,10 @@ router.get('/current', authenticate, ctrlWrapper(ctrl.current));
 
 router.post('/register', validationBody(schemas.registerSchema), ctrlWrapper(ctrl.register));
 
+router.get('/verify:verificationToken', ctrlWrapper(ctrl.verifyEmail));
+
+router.post("/verify", validationBody(schemas.verifySchema), ctrlWrapper(ctrl.resendVerifyEmail));
+
 router.post('/login', validationBody(schemas.loginSchema), ctrlWrapper(ctrl.login));
 
 router.patch('/avatars', authenticate,upload.single('avatar'), ctrlWrapper(ctrl.updateAvatar));

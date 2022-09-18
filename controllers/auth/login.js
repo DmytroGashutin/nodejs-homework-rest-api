@@ -18,7 +18,10 @@ const login = async (req, res) => {
     if (!comparePassword) {
         throw RequestError(404,'Password is wrong')
     }
-// const hashPassword =  await bcrypt.hash(password, 10);
+    if (!user.verify) {
+        throw RequestError(400, "Email not verify")
+    }
+
 
     const payload = {
         id: user._id
@@ -30,7 +33,7 @@ const login = async (req, res) => {
         token,
         user: {
             email,
-            // hashPassword,
+           
             
         },
     })
